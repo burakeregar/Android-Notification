@@ -1211,15 +1211,15 @@ public class NotificationView extends FrameLayout
 
     private void onMsgStart() {
 
-        if (hasState(PAUSED) || getParent() == null || mCallback == null || mHideAnimation == null) {
+        if (hasState(PAUSED) || getParent() == null || mCallback == null) {
             schedule(MSG_DISMISS);
             return;
         }
 
         addState(STARTING);
         if (hasState(DISMISSING)) {
-            if (DBG) Log.v(TAG, "dismissing now. schedule next start.");
-            schedule(MSG_START, (int) mHideAnimation.getDuration());
+            if (mHideAnimation != null)
+                schedule(MSG_START, (int) mHideAnimation.getDuration());
             return;
         }
 
