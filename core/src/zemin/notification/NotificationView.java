@@ -1374,7 +1374,7 @@ public class NotificationView extends FrameLayout
 
     private void onMsgDismiss() {
         if (hasState(TICKING) && !hasState(DISMISSING)) {
-            if (mContentView.isShown()) {
+            if (mContentView != null && mContentView.isShown()) {
                 addState(DISMISSING);
                 mHideAnimationListener = mDismissAnimationListener;
                 hide();
